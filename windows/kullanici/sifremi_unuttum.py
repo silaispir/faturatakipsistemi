@@ -11,7 +11,7 @@ class SifremiUnuttumWindow(QMainWindow):
 
     def init_ui(self):
         self.setWindowTitle("Şifre Sıfırlama")
-        self.resize(800, 600)
+        self.resize(400, 200)
         self.center()
         self.setup_styles()
         self.create_main_widgets()
@@ -24,8 +24,8 @@ class SifremiUnuttumWindow(QMainWindow):
             QWidget#main_card {
                 background-color: #fff;
                 border-radius: 28px;
-                min-width: 700px;
-                min-height: 600px;
+                min-width: 600px;
+                min-height: 500px;
                 max-width: 800px;
                 margin: 20px auto;
                 box-shadow: 0 8px 32px rgba(0,0,0,0.2);

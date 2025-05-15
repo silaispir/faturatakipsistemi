@@ -225,26 +225,6 @@ class Database:
         cursor.execute("SELECT sifre FROM kullanicilar")
         return [row[0] for row in cursor.fetchall()]
 
-    def update_bildirim_ayarlari(self, kullanici_id, bildirim_istiyor, bildirim_sayisi):
-        try:
-            cursor = self.conn.cursor()
-            # Önce kullanıcının var olup olmadığını kontrol et
-            cursor.execute("SELECT id FROM kullanicilar WHERE id = ?", (kullanici_id,))
-            if not cursor.fetchone():
-                print(f"Kullanıcı bulunamadı: {kullanici_id}")
-                return False
-                
-            # Bildirim ayarlarını güncelle
-            cursor.execute("""
-                UPDATE kullanicilar 
-                SET bildirim_istiyor = ?, bildirim_sayisi = ?
-                WHERE id = ?
-            """, (1 if bildirim_istiyor else 0, bildirim_sayisi, kullanici_id))
-            self.conn.commit()
-            return True
-        except Exception as e:
-            print(f"Bildirim ayarları güncellenirken hata oluştu: {str(e)}")
-            return False
 
     def reset_password(self, email, yeni_sifre):
         """Kullanıcının şifresini sıfırlar"""
